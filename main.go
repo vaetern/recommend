@@ -144,7 +144,7 @@ func euclidianDistance(ratings1 []ratedFilm, ratings2 []ratedFilm) float64{
 	for _,x := range ratings1{
 		for _,y := range ratings2{
 			if x.Name == y.Name{
-				ratingDistanceRaw += math.Pow(float64(x.Rating - y.Rating),2)
+				ratingDistanceRaw = ratingDistanceRaw + math.Pow(float64(x.Rating - y.Rating),2)
 			}
 		}
 	}
