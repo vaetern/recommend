@@ -34,12 +34,20 @@ func getCritics() (me Critic, list []Critic) {
 			{"Saving Private Ryan", 10},
 			{"Rogue One", 7},
 			{"Arrival", 10},
+			{"Doctor Strange", 7},
+			{"No Country for Old Men", 10},
+			{"La La Land", 5},
+			{"Fantastic Beasts and Where to Find Them", 7},
+			{"Logan", 9},
+			{"Sucker Punch", 5},
+			{"Бегущий по лезвию 2049", 9},
+			{"The LEGO Batman Movie", 8},
 		}
 
 	criticLyels.RatedFilms =
 		[]RatedFilm{
 			{"World War Z", 7},
-			{"Saving Private Ryan", 8},
+			{"Saving Private Ryan", 9},
 			{"Rogue One", 7},
 			{"Arrival", 9},
 			{"Doctor Strange", 8},
@@ -57,7 +65,7 @@ func getCritics() (me Critic, list []Critic) {
 	criticHagalazia.RatedFilms =
 		[]RatedFilm{
 			{"World War Z", 8},
-			{"Saving Private Ryan", 10},
+			{"Saving Private Ryan", 9},
 			{"Rogue One", 9},
 			{"Arrival", 8},
 			{"Doctor Strange", 5},
