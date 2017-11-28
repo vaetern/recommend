@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 )
 
 func main() {
@@ -32,6 +33,10 @@ func recommendItems() {
 		weightedList = append(weightedList, buildRatedFilmWeightedList(pearsonScore(criticMe.RatedFilms, critic.RatedFilms), critic))
 	}
 
+	//for _, rfl := range weightedList {
+	//	fmt.Println("->", rfl.CorrelationScore, rfl.RatedFilmsWeighted, "\n\n")
+	//}
+
 	ratedFilmsList := make(map[string]*FilmRatedWithWeight)
 
 	for _, wl := range weightedList {
@@ -52,11 +57,20 @@ func recommendItems() {
 					}
 			}
 		}
-
-
 	}
 
-	for _, rfl := range ratedFilmsList {
+	var ss []FilmRatedWithWeight
+	for _, v := range ratedFilmsList {
+		ss = append(ss, *v)
+	}
+
+	sort.Slice(ss, func(i, j int) bool {
+		return ss[i].TotalScore/ss[i].SimilaritySum > ss[j].TotalScore/ss[j].SimilaritySum
+	})
+
+	//log.Printf("%v", ratedFilmsList);
+
+	for _, rfl := range ss {
 		fmt.Println("->", rfl.Name, rfl.TotalScore/rfl.SimilaritySum)
 	}
 
