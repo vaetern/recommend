@@ -1,6 +1,8 @@
 package main
 
-import "math"
+import (
+	"math"
+)
 
 func euclidianDistance(ratings1 []RatedFilm, ratings2 []RatedFilm) float64 {
 

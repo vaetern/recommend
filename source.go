@@ -23,81 +23,74 @@ type RatedFilm struct {
 
 func getCritics() (me Critic, list []Critic) {
 
-	criticMe := Critic{Name: "Myself"}
-	criticLyels := Critic{Name: "Lyels"}
-	criticHagalazia := Critic{Name: "Hagalazia"}
-	criticChiz := Critic{Name: "Chiz50"}
+	abel := Critic{Name: "Abel"}
+	baker := Critic{Name: "Baker"}
+	charlie := Critic{Name: "Charlie"}
+	delta := Critic{Name: "Delta"}
+	echo := Critic{Name: "Echo"}
+	foxtrot := Critic{Name: "Foxtrot"}
 
-	criticMe.RatedFilms =
-		[]RatedFilm{
-			{"World War Z", 7},
-			{"Saving Private Ryan", 10},
-			{"Rogue One", 7},
-			{"Arrival", 10},
-		}
-
-	criticLyels.RatedFilms =
-		[]RatedFilm{
-			{"World War Z", 7},
-			{"Saving Private Ryan", 8},
-			{"Rogue One", 7},
-			{"Arrival", 9},
-			{"Doctor Strange", 8},
-			{"No Country for Old Men", 9},
-			{"La La Land", 8},
-			{"Fantastic Beasts and Where to Find Them", 7},
-			{"Logan", 8},
-			{"Sucker Punch", 4},
-			{"Blade Runner", 4},
-			{"Rush", 3},
-			{"Casino Royale", 3},
-			{"Thor: Ragnarek", 4},
-		}
-
-	criticHagalazia.RatedFilms =
+	abel.RatedFilms =
 		[]RatedFilm{
 			{"World War Z", 8},
 			{"Saving Private Ryan", 10},
-			{"Rogue One", 9},
-			{"Arrival", 8},
-			{"Doctor Strange", 5},
-			{"No Country for Old Men", 4},
-			{"La La Land", 4},
-			{"Fantastic Beasts and Where to Find Them", 8},
-			{"Logan", 7},
-			{"Sucker Punch", 5},
-			{"Бегущий по лезвию 2049", 6},
-			{"The LEGO Batman Movie", 10},
-			{"Blade Runner", 7},
-			{"Rush", 4},
-			{"Casino Royale", 7},
-			{"Thor: Ragnarek", 9},
+			{"Rogue One", 8},
+			{"Arrival", 10},
 		}
 
-	criticChiz.RatedFilms =
+	baker.RatedFilms =
 		[]RatedFilm{
-			{"World War Z", 5},
-			{"Saving Private Ryan", 7},
+			{"World War Z", 6},
+			{"Saving Private Ryan", 8},
 			{"Rogue One", 7},
 			{"Arrival", 8},
-			{"Doctor Strange", 9},
-			{"No Country for Old Men", 9},
-			{"La La Land", 9},
-			{"Fantastic Beasts and Where to Find Them", 6},
-			{"Logan", 7},
-			{"Sucker Punch", 6},
-			{"Бегущий по лезвию 2049", 9},
-			{"The LEGO Batman Movie", 7},
-			{"Blade Runner", 5},
-			{"Rush", 8},
+			{"La La Land", 7},
+			{"Doctor Strange", 6},
+			{"Casino Royale", 8},
+		}
+
+	charlie.RatedFilms =
+		[]RatedFilm{
+			{"World War Z", 6},
+			{"Saving Private Ryan", 8},
+			{"Rogue One", 6},
+			{"Arrival", 6},
+		}
+
+	delta.RatedFilms =
+		[]RatedFilm{
+			{"World War Z", 9},
+			{"Saving Private Ryan", 2},
+			{"Rogue One", 1},
+			{"Arrival", 3},
+		}
+
+	echo.RatedFilms =
+		[]RatedFilm{
+			{"World War Z", 8},
+			{"Saving Private Ryan", 10},
+			{"Rogue One", 8},
+			{"Arrival", 9},
+			{"La La Land", 6},
+			{"Blade Runner 2049", 9},
+			{"Doctor Strange", 7},
 			{"Casino Royale", 7},
-			{"Thor: Ragnarek", 8},
+		}
+
+	foxtrot.RatedFilms =
+		[]RatedFilm{
+			{"World War Z", 6},
+			{"Saving Private Ryan", 8},
+			{"Rogue One", 6},
+			{"Arrival", 6},
+			{"La La Land", 8},
+			{"Blade Runner 2049", 8},
+			{"Doctor Strange", 7},
 		}
 
 	list = []Critic{}
 
-	list = append(list, criticLyels, criticHagalazia, criticChiz)
+	list = append(list, baker, charlie, delta, echo, foxtrot)
 
-
-	return criticMe, list
+	return abel, list
 }

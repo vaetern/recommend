@@ -3,9 +3,20 @@ package main
 import (
 	"fmt"
 	"sort"
+	"math"
 )
 
 func main() {
+	//recommendItems()
+
+	criticMe, Others := getFilms()
+
+	for _, c  := range Others {
+		printPearsonCorrelationFor(criticMe, c)
+	}
+
+	fmt.Println("\n----\n")
+
 	recommendItems()
 }
 
@@ -27,7 +38,7 @@ func printEuclideanDistanceFor(c1 Critic, c2 Critic) {
 }
 
 func recommendItems() {
-	criticMe, Others := getCritics()
+	criticMe, Others := getFilms()
 	var weightedList []RatedFilmWeightedList
 	for _, critic := range Others {
 		weightedList = append(weightedList, buildRatedFilmWeightedList(pearsonScore(criticMe.RatedFilms, critic.RatedFilms), critic))
@@ -41,21 +52,25 @@ func recommendItems() {
 
 	for _, wl := range weightedList {
 		for _, f := range wl.RatedFilmsWeighted {
-
-			r, ok := ratedFilmsList[f.Name]
-			if ok {
-				r.TotalParticipants += 1
-				r.TotalScore += f.Rating
-				r.SimilaritySum += wl.CorrelationScore
-			} else {
-				ratedFilmsList[f.Name] =
-					&FilmRatedWithWeight{
-						Name:              f.Name,
-						TotalParticipants: 1,
-						SimilaritySum:     wl.CorrelationScore,
-						TotalScore:        f.Rating,
+				r, ok := ratedFilmsList[f.Name]
+				if ok {
+					r.TotalParticipants += 1
+					r.SimilaritySum += math.Abs(wl.CorrelationScore)
+					if wl.CorrelationScore > 0 {
+						r.TotalScore += f.Rating
+					} else {
+						r.TotalScore -= f.Rating
 					}
-			}
+
+				} else {
+					ratedFilmsList[f.Name] =
+						&FilmRatedWithWeight{
+							Name:              f.Name,
+							TotalParticipants: 1,
+							SimilaritySum:     math.Abs(wl.CorrelationScore),
+							TotalScore:        f.Rating,
+						}
+				}
 		}
 	}
 
@@ -70,8 +85,15 @@ func recommendItems() {
 
 	//log.Printf("%v", ratedFilmsList);
 
+	var simScore float64
 	for _, rfl := range ss {
-		fmt.Println("->", rfl.Name, rfl.TotalScore/rfl.SimilaritySum)
+		if rfl.SimilaritySum<1 {
+			simScore = rfl.TotalScore * rfl.SimilaritySum
+		}else{
+			simScore = rfl.TotalScore/rfl.SimilaritySum
+		}
+
+		fmt.Println("->", rfl.Name, simScore)
 	}
 
 }
